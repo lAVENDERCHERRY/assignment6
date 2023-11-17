@@ -97,3 +97,17 @@ int main() {
 
   return 0;
 }
+
+// Answer
+// Time for inner: 3.542103 seconds
+// Time for inner2: 1.873826 seconds
+// Time for inner3: 1.716884 seconds
+// What I noticed was that the original 'inner' procedure computes the dot product of two arrays without loop unrolling,
+// resulting in a longer execution time compared to loop-unrolled versions ('inner2' and 'inner3').
+// It processes each element individually in a loop, leading to more instructions and increased overhead.
+// The lack of loop unrolling restricts parallelism, causing a relatively slower execution time.
+// And my findings were that the most efficent at least for run time was inner3 because it has
+// a larger parallelism with its funciton as it has 8. These optimizations benefit from reduced loop overhead and better 
+// SIMD (Single Instruction, Multiple Data) utilization, summing multiple elements in parallel.
+// However, the limiting factor with this function is that even though it has the best run time, its space complexity is not the best because
+// the amount of registers is increased and the amount of data fetched from memory also increases
