@@ -1,3 +1,4 @@
+//Work Cited: ChatGPT, STACHOVERFLOW, AND GITHUB
 #include <stdio.h>
 #include <stdlib.h>
 
