@@ -1,13 +1,16 @@
-//Work Cited: ChatGPT, STACHOVERFLOW, AND GITHUB
+//Work Cited: ChatGPT, STACkOVERFLOW, AND GITHUB
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 void f(float *a, int length, float *dest) {
-  float prod = 1.0f;
-  for (int i = 0; i < length; ++i) {
-    if (a[i] != 0.0f) {
-      prod *= a[i];
+  float prod = 1.0f; //start
+  for (int i = 0; i < length; ++i) {// Initiates a loop that iterates through the elements of the array 'a'
+    if (a[i] != 0.0f) { // Checks the current element of 'a' at index 'i' is not equal to 0.0
+
+      prod *= a[i];  // If true, multiplies 'prod' by the element at index 'i' in 'a'
+
     }
   }
   *dest = prod;
@@ -18,6 +21,9 @@ float *createArray(int length) {
   for (int i = 0; i < length; ++i) {
     float r = rand()/(float)RAND_MAX;
     a[i] = r < 0.5f ? 0.0f : r + 0.26f;
+    // Assigns 0.0 or a value between 0.26-1.26 to the array element at index 'i'
+    // based on a condition: If 'r' is less than 0.5, its 0.0, or its 'r + 0.26'
+
   }
   return a;
 }
@@ -25,17 +31,21 @@ float *createArray(int length) {
 // Helper function to replace 0.0f with 1.0f in the array
 void replaceZeros(float *a, int length) {
   for (int i = 0; i < length; ++i) {
-    if (a[i] == 0.0f) {
-      a[i] = 1.0f;
+    if (a[i] == 0.0f) { //Checks if the current element of 'a' at index 'i' is equal to 0.0.
+
+      a[i] = 1.0f;// If the condition is true, assigns 1.0 to the element at index 'i' in 'a'.
+
     }
   }
 }
 
 // Procedure g without the zero check
 void g(float *a, int length, float *dest) {
-  float prod = 1.0f;
-  for (int i = 0; i < length; ++i) {
-    prod *= a[i];
+  float prod = 1.0f; //start
+  for (int i = 0; i < length; ++i) {  // Initiates a loop that iterates through the elements of the array 'a'
+
+    prod *= a[i]; // Multiplies 'prod' by the element at index 'i' in 'a'
+
   }
   *dest = prod;
 }
@@ -64,7 +74,6 @@ void g(float *a, int length, float *dest) {
 // - 'f(a)' might exhibit better efficiency when 'a' contains a significant number of zero elements,
 //   as it avoids multiplication operations on these zero elements, unlike 'g(b)'.
 
-
 // g(c) and g(b) Efficiency Comparision
 // The 'g' procedure calculates the product of elements in an array 'a' of length 'length'.
 // In the 'main' function, 'g(a)' is compared to 'g(b)' and 'g(c)' for efficiency analysis.
@@ -88,24 +97,24 @@ void g(float *a, int length, float *dest) {
 
 
 int main() {
-  srand(time(NULL));
+  srand(time(NULL)); //random number generator
 
   // Create array a
   int length = 10000;
-  float *a = createArray(length);
+  float *a = createArray(length); //array of random numbers thats length 10000
 
   // Measure execution time for calling f(a) 10,000 times
   clock_t start = clock();
   for (int i = 0; i < 10000; ++i) {
     float result;
-    f(a, length, &result);
+    f(a, length, &result); //Uses function f() with the array 'a', its size, and a place to keep the answer
   }
   clock_t end = clock();
-  printf("Time for f(a): %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
+  printf("Time for f(a): %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);//prints results after iterations
 
   // Create array b with zeros replaced by 1.0f
   float *b = createArray(length);
-  replaceZeros(b, length);
+  replaceZeros(b, length); //replace zeros with 1
 
   // Measure execution time for calling g(b) 10,000 times
   start = clock();
@@ -118,10 +127,12 @@ int main() {
 
   // Create array c with only nonzero elements from a
   float *c = (float *)malloc(length * sizeof(float));
-  int cLength = 0;
-  for (int i = 0; i < length; ++i) {
-    if (a[i] != 0.0f) {
-      c[cLength++] = a[i];
+  int cLength = 0; //keep track of the elements added to array 'c'
+  for (int i = 0; i < length; ++i) {//Initiates a loop that iterates through the elements of the original array 'a'
+
+    if (a[i] != 0.0f) {// Checks the current element of 'a' at index 'i' is not equal to 0.0
+
+      c[cLength++] = a[i];// Puts non-zero numbers from 'a' into array 'c' and keeps count of how many were added
     }
   }
 
@@ -130,6 +141,8 @@ int main() {
   for (int i = 0; i < 10000; ++i) {
     float result;
     g(c, cLength, &result);
+    //Calls function g() passing 'c', its length, and a pointer to store the result
+  }
   }
   end = clock();
   printf("Time for g(c): %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
@@ -138,6 +151,6 @@ int main() {
   free(a);
   free(b);
   free(c);
-
+  // Deallocates memory for arrays 'a', 'b', and 'c'
   return 0;
 }

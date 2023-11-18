@@ -1,4 +1,5 @@
-//Work Cited: ChatGPT, STACHOVERFLOW, AND GITHUB
+//Work Cited: ChatGPT, STACkOVERFLOW, AND GITHUB
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -53,17 +54,17 @@ void inner3(float *u, float *v, int length, float *dest) {
 float *createArray(int length) {
   float *a = (float *)malloc(length * sizeof(float));
   for (int i = 0; i < length; ++i) {
-    a[i] = rand() / (float)RAND_MAX;
+    a[i] = rand() / (float)RAND_MAX; // random float number between 0 and 1
   }
   return a;
 }
 
 int main() {
-  srand(time(NULL));
+  srand(time(NULL)); //random number generator
 
   int length = 100000;
-  float *u = createArray(length);
-  float *v = createArray(length);
+  float *u = createArray(length); //random value
+  float *v = createArray(length);// random value
 
   // Timing for inner
   clock_t start = clock();
@@ -72,7 +73,7 @@ int main() {
     inner(u, v, length, &result);
   }
   clock_t end = clock();
-  printf("Time for inner: %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
+  printf("Time for inner: %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC); //execution time for inner
 
   // Timing for inner2
   start = clock();
@@ -81,16 +82,16 @@ int main() {
     inner2(u, v, length, &result);
   }
   end = clock();
-  printf("Time for inner2: %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
+  printf("Time for inner2: %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC); //execution time for inner2
 
   // Timing for inner3
   start = clock();
   for (int i = 0; i < 10000; ++i) {
     float result;
-    inner3(u, v, length, &result);
+    inner3(u, v, length, &result);//calls function 10000 times
   }
-  end = clock();
-  printf("Time for inner3: %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC);
+  end = clock(); //recording time 
+  printf("Time for inner3: %f seconds\n", ((double)(end - start)) / CLOCKS_PER_SEC); //exectuion time for inner3
 
   // Free allocated memory
   free(u);
@@ -99,7 +100,6 @@ int main() {
   return 0;
 }
 
-// Answer
 // Time for inner: 3.542103 seconds
 // Time for inner2: 1.873826 seconds
 // Time for inner3: 1.716884 seconds

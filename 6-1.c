@@ -1,4 +1,4 @@
-//Work Cited: ChatGPT, STACHOVERFLOW, AND GITHUB
+//Work Cited: ChatGPT, STACkOVERFLOW, AND GITHUB
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,7 +18,8 @@ long f(long a, long b, long c, long d, long n) {
 
 int main(int argc, char *argv[]) {
   if (argc == 6) // Check if the number of arguments passed is 6
-  { //the arguements with function f
+  { 
+    //the arguements with function f
     long a = strtol(argv[1], NULL, 10);
     long b = strtol(argv[2], NULL, 10);
     long c = strtol(argv[3], NULL, 10);
@@ -29,6 +30,7 @@ int main(int argc, char *argv[]) {
   else 
   {
     // Test cases with defined arguements
+
     printf("f(1, 2, 3, 4, 5): %ld\n", f(1, 2, 3, 4, 5));
     printf("f(2, 3, 4, 5, 6): %ld\n", f(2, 3, 4, 5, 6));
     printf("f(6, 5, 4, 3, 2): %ld\n", f(6, 5, 4, 3, 2));
