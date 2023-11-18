@@ -1,6 +1,6 @@
+//Work Cited: ChatGPT, STACHOVERFLOW, AND GITHUB
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <time.h>
 
 // Original inner procedure
