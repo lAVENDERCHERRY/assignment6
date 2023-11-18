@@ -9,7 +9,7 @@ long f(long a, long b, long c, long d, long n) {
   for (long i = 0; i < n; i += 2) //increment by 2
   {
     icd = i * c * d;  // Calculate i * c * d inside the loop, but only once
-    for (long j = 0; j < n; j += 2) { //nested loop that increments by 2 each time
+    for (long j = 0; j < n; j += 2) { //nested loop that increment by 2 each time
       result += ab + icd + j; //updates the results
     }
   }
