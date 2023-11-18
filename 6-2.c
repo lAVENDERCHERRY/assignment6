@@ -1,6 +1,6 @@
-//Work Cited: ChatGPT, STACHOVERFLOW, AND GITHUB
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <time.h>
 
 // Original inner procedure
@@ -98,6 +98,8 @@ int main() {
 
   return 0;
 }
+
+// Answer
 // Time for inner: 3.542103 seconds
 // Time for inner2: 1.873826 seconds
 // Time for inner3: 1.716884 seconds
